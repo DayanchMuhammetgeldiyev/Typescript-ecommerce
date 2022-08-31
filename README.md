@@ -8,4 +8,4 @@
 
 [Live demo](https://typescript-ecommerce.vercel.app/)
 
-![image info](./Image/Screenshoot.jpg)
+![image info](./src/Image/Screenshoot.jpg)
