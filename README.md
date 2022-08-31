@@ -6,4 +6,4 @@
 - Styled-component
 - [Fakestoreapi](https://fakestoreapi.com) as api tool for products
 
-Live demo(https://typescript-ecommerce.vercel.app/)
+[Live demo](https://typescript-ecommerce.vercel.app/)
