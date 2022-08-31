@@ -1,9 +1,10 @@
-import React,{useState}  from 'react';
+import {useState}  from 'react';
 import {useQuery} from 'react-query';
 import { LinearProgress,Drawer,Grid,Badge } from '@mui/material';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import {Wrapper, StyleButton } from './App.styles';
-import Item from './Item/Item'
+import Item from './Item/Item';
+import Cart  from './Cart/Cart';
 export type CartItemType= {
   id: number;
   category: string;
@@ -24,7 +25,8 @@ function App() {
   const {data, isLoading, error} = useQuery<CartItemType[]>('products', getProducts);
   console.log(data)
 
-  const getTotalItems = (items: CartItemType[]) => null;
+  const getTotalItems = (items: CartItemType[]) => 
+  items.reduce((ack: number, items) => ack + items.amount, 0);
 
   const handleAddToCart = (clickedItem: CartItemType) => null;
 
@@ -38,7 +40,11 @@ function App() {
   return (
     <Wrapper>
       <Drawer anchor='right' open={cartOpen} onClose={() => setCartOpen(false)}>
-        Cart goes here
+       <Cart 
+       cartItems={cartItems}
+       addToCart={handleAddToCart}
+       removeFromCart={handleRemoveFromCart}
+       />
         </Drawer>
         <StyleButton onClick={() => setCartOpen(true)} >
            <Badge badgeContent={getTotalItems(cartItems)} color='error'>
